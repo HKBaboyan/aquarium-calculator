@@ -23,19 +23,6 @@
     box-shadow: 0 24px 60px rgba(16, 42, 67, 0.08);
 }
 
-.eyebrow {
-    display: inline-flex;
-    margin-bottom: 14px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(56, 142, 255, 0.12);
-    color: #0d47a1;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
 .logo {
     display: block;
     max-width: 100px;
