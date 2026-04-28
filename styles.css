@@ -15,7 +15,7 @@
 
 .hero {
     text-align: center;
-    padding: 24px 20px;
+    padding: 10px 20px;
     margin-bottom: 24px;
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(16, 42, 67, 0.08);
@@ -25,10 +25,9 @@
 
 .logo {
     display: block;
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px auto;
     object-fit: contain;
 }
 
