@@ -27,7 +27,8 @@
     display: block;
     max-width: 400px;
     height: auto;
-    margin: -20px auto;
+    margin-left: auto;
+    margin-right: auto;
     object-fit: contain;
 }
 
@@ -192,4 +193,8 @@ button:focus-visible {
     .content-glue h3 {
         font-size: 1rem;
     }
+}
+
+.hidden {
+    display: none !important;
 }
