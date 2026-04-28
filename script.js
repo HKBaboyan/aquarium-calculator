@@ -7,6 +7,12 @@ function updateVisibility() {
     });
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    const shapeSelect = document.getElementById('shape');
+    shapeSelect.addEventListener('change', updateVisibility);
+    updateVisibility();
+});
+
 function calculate() {
     const shape = document.getElementById('shape').value;
     const unit = document.getElementById('unit').value;
@@ -66,10 +72,13 @@ function calculate() {
 }
 
 function clearAll() {
-    // Clear all inputs
+    // Reset selects and inputs
+    document.getElementById('shape').value = 'rectangular';
+    document.getElementById('unit').value = 'inches';
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value = '');
     
-    // Reset Result
+    // Reset visibility and result
+    updateVisibility();
     document.getElementById('result').innerText = '';
 }
