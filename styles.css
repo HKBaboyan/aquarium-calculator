@@ -31,12 +31,6 @@
     object-fit: contain;
 }
 
-.hero h1 {
-    margin: 0;
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    line-height: 1.06;
-}
-
 .hero p {
     margin-top: 14px;
     color: #334e68;
