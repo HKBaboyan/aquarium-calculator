@@ -83,7 +83,7 @@ select:focus {
 }
 
 .btn-calculate {
-    flex: 2;
+    flex: 1;
     padding: 12px;
     background-color: #388eff;
     color: white;
