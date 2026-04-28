@@ -10,30 +10,47 @@ function updateVisibility() {
 function calculate() {
     const shape = document.getElementById('shape').value;
     const unit = document.getElementById('unit').value;
+    const thickness = parseFloat(document.getElementById('thickness').value) || 0;
     const res = document.getElementById('result');
-    let volume = 0; // Volume in cubic units (inches or cm)
+    let volume = 0;
 
     if (shape === 'rectangular') {
-        const l = parseFloat(document.getElementById('rect-l').value);
-        const w = parseFloat(document.getElementById('rect-w').value);
-        const h = parseFloat(document.getElementById('rect-h').value);
+        const l = parseFloat(document.getElementById('rect-l').value) || 0;
+        const w = parseFloat(document.getElementById('rect-w').value) || 0;
+        const h = parseFloat(document.getElementById('rect-h').value) || 0;
         if(!l || !w || !h) return res.innerText = "Please enter dimensions";
-        volume = l * w * h;
+        
+        // Subtract thickness: 2 sides for L and W, 1 side for H (bottom)
+        const intL = Math.max(0, l - (2 * thickness));
+        const intW = Math.max(0, w - (2 * thickness));
+        const intH = Math.max(0, h - thickness);
+        volume = intL * intW * intH;
+
     } else if (shape === 'cylinder') {
-        const d = parseFloat(document.getElementById('cyl-d').value);
-        const h = parseFloat(document.getElementById('cyl-h').value);
+        const d = parseFloat(document.getElementById('cyl-d').value) || 0;
+        const h = parseFloat(document.getElementById('cyl-h').value) || 0;
         if(!d || !h) return res.innerText = "Please enter dimensions";
-        volume = Math.PI * Math.pow((d / 2), 2) * h;
+        
+        const intD = Math.max(0, d - (2 * thickness));
+        const intH = Math.max(0, h - thickness);
+        volume = Math.PI * Math.pow((intD / 2), 2) * intH;
+
     } else if (shape === 'corner') {
-        const r = parseFloat(document.getElementById('corn-r').value);
-        const h = parseFloat(document.getElementById('corn-h').value);
+        const r = parseFloat(document.getElementById('corn-r').value) || 0;
+        const h = parseFloat(document.getElementById('corn-h').value) || 0;
         if(!r || !h) return res.innerText = "Please enter dimensions";
-        volume = (Math.PI * Math.pow(r, 2) * h) / 4;
+        
+        const intR = Math.max(0, r - thickness);
+        const intH = Math.max(0, h - thickness);
+        volume = (Math.PI * Math.pow(intR, 2) * intH) / 4;
+
     } else if (shape === 'bowl') {
-        const d = parseFloat(document.getElementById('bowl-d').value);
+        const d = parseFloat(document.getElementById('bowl-d').value) || 0;
         if(!d) return res.innerText = "Please enter dimensions";
-        const r = d / 2;
-        volume = (2/3) * Math.PI * Math.pow(r, 3);
+        
+        const intD = Math.max(0, d - (2 * thickness));
+        const intR = intD / 2;
+        volume = (2/3) * Math.PI * Math.pow(intR, 3);
     }
 
     // Convert to US Gallons/Liters
