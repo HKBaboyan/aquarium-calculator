@@ -15,7 +15,7 @@
 
 .hero {
     text-align: center;
-    padding: 10px 20px;
+    padding: 12px 20px 24px 20px;
     margin-bottom: 24px;
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(16, 42, 67, 0.08);
@@ -27,12 +27,12 @@
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 10px;
     object-fit: contain;
 }
 
 .hero p {
-    margin-top: 14px;
+    margin-top: 6px;
     color: #334e68;
     font-size: 1rem;
 }
