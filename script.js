@@ -1,25 +1,20 @@
+// Function to show/hide shape inputs
 function updateVisibility() {
     const shape = document.getElementById('shape').value;
-    // Hide all containers
     const containers = ['rectangular', 'cylinder', 'corner', 'bowl'];
+    
     containers.forEach(s => {
-        document.getElementById('inputs-' + s).style.display = (s === shape) ? 'block' : 'none';
+        const container = document.getElementById('inputs-' + s);
+        if (s === shape) {
+            container.classList.remove('hidden');
+        } else {
+            container.classList.add('hidden');
+        }
     });
 }
 
-function initVisibility() {
-    const shapeSelect = document.getElementById('shape');
-    if (shapeSelect) {
-        shapeSelect.addEventListener('change', updateVisibility);
-    }
-    updateVisibility();
-}
-
-if (document.readyState !== 'loading') {
-    initVisibility();
-} else {
-    document.addEventListener('DOMContentLoaded', initVisibility);
-}
+// Ensure visibility is correct on page load
+document.addEventListener(updateVisibility);
 
 function calculate() {
     const shape = document.getElementById('shape').value;
@@ -80,13 +75,10 @@ function calculate() {
 }
 
 function clearAll() {
-    // Reset selects and inputs
     document.getElementById('shape').value = 'rectangular';
     document.getElementById('unit').value = 'inches';
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value = '');
-    
-    // Reset visibility and result
     updateVisibility();
     document.getElementById('result').innerText = '';
 }
