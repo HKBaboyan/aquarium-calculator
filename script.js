@@ -5,16 +5,25 @@ function updateVisibility() {
     
     containers.forEach(s => {
         const container = document.getElementById('inputs-' + s);
-        if (s === shape) {
-            container.classList.remove('hidden');
-        } else {
-            container.classList.add('hidden');
+        if (container) {
+            if (s === shape) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
         }
     });
 }
 
 // Ensure visibility is correct on page load
 document.addEventListener('DOMContentLoaded', updateVisibility);
+
+// Keep keyboard support
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        calculate();
+    }
+});
 
 function calculate() {
     const shape = document.getElementById('shape').value;
@@ -29,7 +38,6 @@ function calculate() {
         const l = getValue('rect-l');
         const w = getValue('rect-w');
         const h = getValue('rect-h');
-        if(!l || !w || !h) return res.innerText = "Please enter dimensions";
         
         const intL = Math.max(0, l - (2 * thickness));
         const intW = Math.max(0, w - (2 * thickness));
@@ -39,7 +47,6 @@ function calculate() {
     } else if (shape === 'cylinder') {
         const d = getValue('cyl-d');
         const h = getValue('cyl-h');
-        if(!d || !h) return res.innerText = "Please enter dimensions";
         
         const intD = Math.max(0, d - (2 * thickness));
         const intH = Math.max(0, h - thickness);
@@ -48,7 +55,6 @@ function calculate() {
     } else if (shape === 'corner') {
         const r = getValue('corn-r');
         const h = getValue('corn-h');
-        if(!r || !h) return res.innerText = "Please enter dimensions";
         
         const intR = Math.max(0, r - thickness);
         const intH = Math.max(0, h - thickness);
@@ -56,13 +62,13 @@ function calculate() {
 
     } else if (shape === 'bowl') {
         const d = getValue('bowl-d');
-        if(!d) return res.innerText = "Please enter dimensions";
         
         const intD = Math.max(0, d - (2 * thickness));
         const intR = intD / 2;
         volume = (2/3) * Math.PI * Math.pow(intR, 3);
     }
 
+    // Output formatting
     if (unit === 'inches') {
         const gallons = volume / 231;
         const liters = volume * 0.0163871;
