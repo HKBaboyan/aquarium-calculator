@@ -14,7 +14,7 @@ function updateVisibility() {
 }
 
 // Ensure visibility is correct on page load
-document.addEventListener(updateVisibility);
+document.addEventListener('DOMContentLoaded', updateVisibility);
 
 function calculate() {
     const shape = document.getElementById('shape').value;
