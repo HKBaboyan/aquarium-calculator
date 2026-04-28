@@ -36,6 +36,14 @@
     text-transform: uppercase;
 }
 
+.logo {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
 .hero h1 {
     margin: 0;
     font-size: clamp(2rem, 5vw, 2.8rem);
