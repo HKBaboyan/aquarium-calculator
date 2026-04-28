@@ -25,9 +25,9 @@
 
 .logo {
     display: block;
-    max-width: 160px;
+    max-width: 400px;
     height: auto;
-    margin: 0 auto 24px;
+    margin: -20px auto;
     object-fit: contain;
 }
 
