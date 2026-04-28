@@ -76,29 +76,40 @@ select:focus {
     box-shadow: 0 0 0 4px rgba(56, 142, 255, 0.15);
 }
 
-button {
-    width: 100%;
-    padding: 16px 20px;
-    margin-top: 4px;
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-calculate {
+    flex: 2;
+    padding: 12px;
+    background-color: #388eff;
+    color: white;
     border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #2d8cff 0%, #0070dd 100%);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 30px rgba(38, 112, 255, 0.24);
+.btn-clear {
+    flex: 1;
+    padding: 12px;
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-button:focus-visible {
-    outline: 3px solid rgba(56, 142, 255, 0.35);
-    outline-offset: 3px;
+.btn-calculate:hover {
+    background-color: #2d73cc;
+}
+
+.btn-clear:hover {
+    background-color: #7f8c8d;
 }
 
 #result {
