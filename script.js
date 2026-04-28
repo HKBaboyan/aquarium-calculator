@@ -7,11 +7,19 @@ function updateVisibility() {
     });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function initVisibility() {
     const shapeSelect = document.getElementById('shape');
-    shapeSelect.addEventListener('change', updateVisibility);
+    if (shapeSelect) {
+        shapeSelect.addEventListener('change', updateVisibility);
+    }
     updateVisibility();
-});
+}
+
+if (document.readyState !== 'loading') {
+    initVisibility();
+} else {
+    document.addEventListener('DOMContentLoaded', initVisibility);
+}
 
 function calculate() {
     const shape = document.getElementById('shape').value;
